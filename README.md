@@ -15,6 +15,6 @@ Traffic modeling using the Poisson distribution and **Maximum Likelihood Estimat
 
 ## Student
 
-Name: Endrit Abduahi
-Course: **YZM212 – Machine Learning**
+Name: Endrit Abduahi . 
+Course: **YZM212 – Machine Learning** . 
 University: Ankara University
