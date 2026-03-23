@@ -1,50 +1,104 @@
-Makine Öğrenmesi, Matrisler, Özdeğer ve Özvektör İlişkisi
+# Eigenvalues & Eigenvectors – Machine Learning Lab 3
 
-Makine öğrenmesi büyük ölçüde lineer cebire dayanır. Veriler genellikle matrisler şeklinde temsil edilir.
+## 1. Matrix Manipulation, Eigenvalues and Eigenvectors in Machine Learning
 
-Her satır → bir veri örneği
-Her sütun → bir özellik (feature)
-Matris Manipülasyonu
+In machine learning, data is usually represented as matrices. Each row represents a data sample and each column represents a feature.
 
-Makine öğrenmesinde:
+Matrix manipulation is used in many operations such as transforming data, scaling features, and training models.
 
-Veri dönüşümleri
-Ölçekleme (normalization)
-Lineer modeller
-gibi işlemler matris çarpımı ve işlemleri ile yapılır.
-Özdeğerler ve Özvektörler
+Eigenvalues and eigenvectors are special properties of square matrices. They satisfy the equation:
 
-Bir kare matris için:
+A · v = λ · v
 
-𝐴
-𝑣
-=
-𝜆
-𝑣
-Av=λv
-v → özvektör
-λ (lambda) → özdeğer
+Here:
 
-Bu ifade, dönüşüm sonrası vektörün yönünün değişmediğini gösterir.
+* v is the eigenvector (a direction)
+* λ is the eigenvalue (a scaling factor)
 
-Makine Öğrenmesinde Kullanım Alanları
+This means when a matrix transforms a vector, the eigenvector does not change direction, only its length changes.
 
-1. PCA (Principal Component Analysis)
-   
-Boyut indirgeme yöntemi
-Kovaryans matrisinin özdeğerleri/özvektörleri kullanılır
-En büyük özdeğer → en önemli bilgi yönü
+### Where they are used:
 
-2. SVD (Singular Value Decomposition)
-   
-Veri sıkıştırma
-Gürültü azaltma
+* **PCA (Principal Component Analysis):** Used for reducing dimensions. The largest eigenvalues show the most important directions in data.
+* **SVD (Singular Value Decomposition):** Used in data compression and noise reduction.
+* **Spectral Clustering:** Uses eigenvectors of matrices to group similar data.
 
-3. Spektral Clustering
-   
-Graf tabanlı kümeleme
-Laplacian matrisinin özvektörleri kullanılır
+---
 
-4. Lineer Dönüşümler
-   
-Veri uzayının yeniden yönlendirilmesi
+## 2. Numpy `linalg.eig` Function
+
+The function `numpy.linalg.eig` is used to compute eigenvalues and eigenvectors of a square matrix.
+
+Example usage:
+
+```python
+import numpy as np
+
+A = np.array([[4, 2],
+              [1, 3]])
+
+values, vectors = np.linalg.eig(A)
+```
+
+### How it works:
+
+* It takes a square matrix as input.
+* It returns:
+
+  * Eigenvalues
+  * Eigenvectors
+
+Internally, it uses optimized numerical methods from the LAPACK library, mainly based on the QR algorithm.
+
+Steps (simplified):
+
+1. Matrix is transformed into a simpler form
+2. QR decomposition is applied
+3. Iterative process finds eigenvalues
+
+---
+
+## 3. Manual Eigenvalue Calculation and Comparison
+
+Instead of using NumPy, eigenvalues can be calculated manually using the characteristic equation:
+
+det(A − λI) = 0
+
+For the matrix:
+
+A = [[4, 2],
+[1, 3]]
+
+The equation becomes:
+
+(4 − λ)(3 − λ) − 2 = 0
+
+This simplifies to:
+
+λ² − 7λ + 10 = 0
+
+Solving this equation gives the eigenvalues.
+
+### Comparison
+
+* Manual calculation gives the same eigenvalues as NumPy
+* NumPy is faster and works for large matrices
+* Small differences may occur due to numerical precision
+
+---
+
+## Conclusion
+
+Eigenvalues and eigenvectors are important tools in machine learning. They help in understanding data structure, reducing dimensions, and improving model performance.
+
+Manual calculation helps understanding the concept, while libraries like NumPy make computation efficient.
+
+---
+
+## References
+
+* Machine Learning Mastery – Introduction to Matrices
+* Machine Learning Mastery – Eigenvalues and Eigenvectors
+* NumPy Documentation
+* NumPy GitHub Repository
+* LucasBN Eigenvalues Repository
