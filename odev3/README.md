@@ -29,14 +29,18 @@ Bu ifade, dönüşüm sonrası vektörün yönünün değişmediğini gösterir.
 
 Makine Öğrenmesinde Kullanım Alanları
 1. PCA (Principal Component Analysis)
+   
 Boyut indirgeme yöntemi
 Kovaryans matrisinin özdeğerleri/özvektörleri kullanılır
 En büyük özdeğer → en önemli bilgi yönü
 2. SVD (Singular Value Decomposition)
+
 Veri sıkıştırma
 Gürültü azaltma
 3. Spektral Clustering
+
 Graf tabanlı kümeleme
 Laplacian matrisinin özvektörleri kullanılır
 4. Lineer Dönüşümler
+
 Veri uzayının yeniden yönlendirilmesi
